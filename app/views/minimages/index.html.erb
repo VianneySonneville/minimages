@@ -1,6 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<%= title :Minimages, { 
+  actions: [
+    {
+      label: "New minimage",
+      path: new_minimage_path
+    }
+  ]
+}%>
 
-<h1>Minimages</h1>
+<p style="color: green"><%= notice %></p>
 
 <div id="minimages">
   <% @minimages.each do |minimage| %>
@@ -9,6 +16,6 @@
       <%= link_to "Show this minimage", minimage %>
     </p>
   <% end %>
+  <%# <sl-button size="small">Click me</sl-button> %>
+  <%#= app_link_to "New minimage", new_minimage_path %>
 </div>
-
-<%= link_to "New minimage", new_minimage_path %>

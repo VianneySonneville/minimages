@@ -65,6 +65,9 @@ class MinimagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def minimage_params
-      params.fetch(:minimage, {})
+      params.require(:minimage).permit(
+        :image,
+        images: []
+      )
     end
 end
