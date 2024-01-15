@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Minimages</h1>
+
+<div id="minimages">
+  <% @minimages.each do |minimage| %>
+    <%= render minimage %>
+    <p>
+      <%= link_to "Show this minimage", minimage %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New minimage", new_minimage_path %>

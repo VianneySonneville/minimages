@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @minimage %>
+
+<div>
+  <%= link_to "Edit this minimage", edit_minimage_path(@minimage) %> |
+  <%= link_to "Back to minimages", minimages_path %>
+
+  <%= button_to "Destroy this minimage", @minimage, method: :delete %>
+</div>

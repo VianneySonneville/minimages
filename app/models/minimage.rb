@@ -1,0 +1,2 @@
+class Minimage < ApplicationRecord
+end
