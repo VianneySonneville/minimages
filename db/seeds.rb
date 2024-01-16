@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Minimage.all.delete_all
+
+(1..1000).each do |i|
+  m = Minimage.new(title: "Minimage #{i}")
+  m.image.attach(
+    io: File.open(Rails.root.join('test/fixtures/files/chien.jpg')),
+    filename: "img#{i}.png"
+  )
+  m.save
+end

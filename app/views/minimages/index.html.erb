@@ -2,15 +2,12 @@
     { label: "New minimage", href: new_minimage_path }
 ] %>
 
+<div>Total pictures: <%= @minimages.count %></div>
+<%= horizontal_space %>
+<%= horizontal_space %>
+
 <%= success_message(notice) if notice.present? %>
 
-<div id="minimages">
-  <% @minimages.each do |minimage| %>
-    <%= render minimage %>
-    <p>
-      <%= link_to "Show this minimage", minimage %>
-    </p>
-  <% end %>
-  <%# <sl-button size="small">Click me</sl-button> %>
-  <%#= app_link_to "New minimage", new_minimage_path %>
+<div id="minimages" class="flex gap-4">
+  <%= render @minimages %>
 </div>
