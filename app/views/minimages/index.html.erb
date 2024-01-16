@@ -2,7 +2,7 @@
     { label: "New minimage", href: new_minimage_path }
 ] %>
 
-<p style="color: green"><%= notice %></p>
+<%= success_message(notice) if notice.present? %>
 
 <div id="minimages">
   <% @minimages.each do |minimage| %>
