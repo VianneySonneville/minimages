@@ -23,27 +23,19 @@ class MinimagesController < ApplicationController
   def create
     @minimage = Minimage.new(minimage_params)
 
-    respond_to do |format|
-      if @minimage.save
-        format.html { redirect_to minimage_url(@minimage), notice: "Minimage was successfully created." }
-        format.json { render :show, status: :created, location: @minimage }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @minimage.errors, status: :unprocessable_entity }
-      end
+    if @minimage.save
+      redirect_to minimages_url, notice: "Minimage was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /minimages/1 or /minimages/1.json
   def update
-    respond_to do |format|
-      if @minimage.update(minimage_params)
-        format.html { redirect_to minimage_url(@minimage), notice: "Minimage was successfully updated." }
-        format.json { render :show, status: :ok, location: @minimage }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @minimage.errors, status: :unprocessable_entity }
-      end
+    if @minimage.update(minimage_params)
+      redirect_to minimage_url(@minimage), notice: "Minimage was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -51,10 +43,7 @@ class MinimagesController < ApplicationController
   def destroy
     @minimage.destroy
 
-    respond_to do |format|
-      format.html { redirect_to minimages_url, notice: "Minimage was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to minimages_url, notice: "Minimage was successfully destroyed."
   end
 
   private
@@ -66,6 +55,8 @@ class MinimagesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def minimage_params
       params.require(:minimage).permit(
+        :title,
+        :description,
         :image,
         images: []
       )

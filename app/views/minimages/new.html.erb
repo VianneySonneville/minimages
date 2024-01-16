@@ -1,9 +1,9 @@
-<h1>New minimage</h1>
+<%= title :Minimages %>
+
+<%= breadcrumb [
+  { label: "Home", href: "/" },
+  { label: "Minimages", href: minimages_path },
+  { label: "new", href: "#" }
+] %>
 
 <%= render "form", minimage: @minimage %>
-
-<br>
-
-<div>
-  <%= link_to "Back to minimages", minimages_path %>
-</div>

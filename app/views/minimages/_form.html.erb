@@ -1,17 +1,12 @@
-<%= form_with(model: minimage) do |form| %>
+<%= form model: minimage, enctype: "multipart/form-data" do %>
   <% if minimage.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(minimage.errors.count, "error") %> prohibited this minimage from being saved:</h2>
-
-      <ul>
-        <% minimage.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <%= errors_form minimage %>
   <% end %>
+  <%= horizontal_space %>
+  <%= text_input minimage, :title %>
+  <%= file_input minimage, :image %>
+  <%= area_input minimage, :description %>
+  <%= file_input minimage, :images, multiple: true %>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= action_form %>
 <% end %>
