@@ -41,7 +41,7 @@ module Components::FormHelper
   end
 
   def file_input(model = nil, field, **attr)
-    content_tag "input", "", type: "file", name: "#{model&.class&.name&.downcase}[#{field}]", label: field, value: model.send(field), style: "padding: 10px 0px 10px 0px", multiple: attr[:multiple] || false
+    content_tag "input", "", type: "file", name: "#{model&.class&.name&.downcase}[#{field}]", label: field, value: model.send(field), accept: "image/*", style: "padding: 10px 0px 10px 0px", multiple: attr[:multiple] || false
   end
 
   def action_form
