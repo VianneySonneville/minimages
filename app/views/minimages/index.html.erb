@@ -3,10 +3,10 @@
 ] %>
 
 <div>Total pictures: <%= @minimages.count %></div>
-<%= horizontal_space %>
-<%= horizontal_space %>
 
+<%= horizontal_space %>
 <%= success_message(notice) if notice.present? %>
+<%= horizontal_space %>
 
 <div id="minimages" class="gallery">
   <%= render @minimages %>

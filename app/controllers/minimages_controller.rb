@@ -1,5 +1,9 @@
 class MinimagesController < ApplicationController
+  include ResizingConcern
+  skip_before_action :verify_authenticity_token
   before_action :set_minimage, only: %i[ show edit update destroy ]
+  before_action lambda { params[:image] = resizing_image(params[:image]) }, only: :create
+  before_action lambda { params[:base64] = base64_image(params[:image]) }, only: :create
 
   # GET /minimages or /minimages.json
   def index
@@ -22,7 +26,6 @@ class MinimagesController < ApplicationController
   # POST /minimages or /minimages.json
   def create
     @minimage = Minimage.new(minimage_params)
-
     if @minimage.save
       redirect_to minimages_url, notice: "Minimage was successfully created."
     else
@@ -54,10 +57,11 @@ class MinimagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def minimage_params
-      params.require(:minimage).permit(
+      params.permit(
         :title,
         :description,
         :image,
+        :base64,
         images: []
       )
     end
